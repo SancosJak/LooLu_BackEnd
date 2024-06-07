@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/java/loolu/loolu_backend/controllers/ProductsController.java
+src/main/java/loolu/loolu_backend/models/Products.java
+src/main/java/loolu/loolu_backend/repository/InMemoryProductsDAO.java
+src/main/java/loolu/loolu_backend/services/impl/InMemoryProductServiceImpl.java

@@ -20,6 +20,12 @@ public class Product {
     private Long id;
 
     @Column(nullable = false)
+    private Long categoryId;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)

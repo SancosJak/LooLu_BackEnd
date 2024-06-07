@@ -97,4 +97,35 @@ public class ProductController {
         List<Product> products = productService.findProductsByTitle(title);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    @Operation(
+            summary = "Find products by category",
+            description = "Retrieve products that belong to the given category"
+    )
+    @GetMapping("/byCategory/{categoryId}")
+    public ResponseEntity<List<Product>> findProductsByCategory(@PathVariable Long categoryId) {
+        List<Product> products = productService.findProductsByCategory(categoryId);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @Operation(
+            summary = "Find products by price range",
+            description = "Retrieve products that have a price between the given range"
+    )
+    @GetMapping("/byPrice/{minPrice}/{maxPrice}")
+    public ResponseEntity<List<Product>> findProductsByPriceBetween(@PathVariable Double minPrice, @PathVariable Double maxPrice) {
+        List<Product> products = productService.findProductsByPriceBetween(minPrice, maxPrice);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @Operation(
+            summary = "Find products by name and price range",
+            description = "Retrieve products that match the given name and have a price between the given range"
+    )
+    @GetMapping("/byNameAndPrice/{name}/{minPrice}/{maxPrice}")
+    public ResponseEntity<List<Product>> findProductsByNameAndPriceBetween(@PathVariable String name, @PathVariable Double minPrice, @PathVariable Double maxPrice) {
+        List<Product> products = productService.findProductsByNameAndPriceBetween(name, minPrice, maxPrice);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
+

@@ -45,4 +45,19 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByTitleContainingIgnoreCase(title);
     }
 
+    @Override
+    public List<Product> findProductsByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
+
+    @Override
+    public List<Product> findProductsByPriceBetween(Double minPrice, Double maxPrice) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice);
+    }
+
+    @Override
+    public List<Product> findProductsByNameAndPriceBetween(String name, Double minPrice, Double maxPrice) {
+        return productRepository.findProductsByNameAndPriceBetween(name, minPrice, maxPrice);
+    }
+
 }

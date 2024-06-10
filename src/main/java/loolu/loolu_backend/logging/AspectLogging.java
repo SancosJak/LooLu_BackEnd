@@ -15,9 +15,60 @@ import java.util.List;
 public class AspectLogging {
     private final Logger logger = LoggerFactory.getLogger(AspectLogging.class);
 
+    //******************************************************** Vyacheslav **************************
+    //Pointcut for CartController.AaddItemToCart
+    @Pointcut("execution(* loolu.loolu_backend.controllers.CartController.addItemToCart(..))")
+    public void CartControllerAaddItemToCart() {
+    }
+
+    @AfterReturning(value = "CartControllerAaddItemToCart()", returning = "result")
+    public void afterReturningCartControllerAaddItemToCart(Object result) {
+        logger.info("=== Vyacheslav === Method getCartItems of the class ProductServiceImpl successfully returned product {}", result);
+    }
+
+    @AfterThrowing(value = "CartControllerAaddItemToCart()", throwing = "e")
+    public void afterThrowingExceptionWhileGettingCartControllerAaddItemToCart(Exception e) {
+        logger.info("=== Vyacheslav === Method getCartItems of the class ProductServiceImpl threw an exception while getting product: message - {}", e.getMessage());
+    }
+
+
+    //Pointcut for getCartItems
+    @Pointcut("execution(* loolu.loolu_backend.services.impl.CartServiceImpl.getCartItems(..))")
+    public void getCartItems() {
+    }
+
+    @AfterReturning(value = "getCartItems()", returning = "result")
+    public void afterReturninggetCartItems(Object result) {
+        logger.info("=== Vyacheslav === Method getCartItems of the class ProductServiceImpl successfully returned product {}", result);
+    }
+
+    @AfterThrowing(value = "getCartItems()", throwing = "e")
+    public void afterThrowingExceptionWhileGettinggetCartItems(Exception e) {
+        logger.info("=== Vyacheslav === Method getCartItems of the class ProductServiceImpl threw an exception while getting product: message - {}", e.getMessage());
+    }
+
+    // Pointcut for addItemToCart
+    @Pointcut("execution(* loolu.loolu_backend.services.impl.CartServiceImpl.addItemToCart(..))")
+    public void addItemToCart() {
+    }
+
+    @AfterReturning(value = "addItemToCart()", returning = "result")
+    public void afterReturningAddItemToCart(Object result) {
+        logger.info("=== Vyacheslav === Method AddItemToCart of the class ProductServiceImpl successfully returned product {}", result);
+    }
+
+    @AfterThrowing(value = "addItemToCart()", throwing = "e")
+    public void afterThrowingExceptionWhileGettingAddItemToCart(Exception e) {
+        logger.info("=== Vyacheslav === Method AddItemToCart of the class ProductServiceImpl threw an exception while getting product: message - {}", e.getMessage());
+    }
+
+
+    //******************************************************** Sandor **************************
+
     // Pointcut for getting a product by ID
     @Pointcut("execution(* loolu.loolu_backend.services.impl.ProductServiceImpl.getProductById(..))")
-    public void getProductById() {}
+    public void getProductById() {
+    }
 
     @AfterReturning(value = "getProductById()", returning = "result")
     public void afterReturningProductById(Object result) {
@@ -43,7 +94,8 @@ public class AspectLogging {
 
     // Pointcut and Advice for getting all products
     @Pointcut("execution(* loolu.loolu_backend.services.impl.ProductServiceImpl.getAllProducts(..))")
-    public void getAllProducts() {}
+    public void getAllProducts() {
+    }
 
     @Before("getAllProducts()")
     public void beforeGettingAllProducts() {

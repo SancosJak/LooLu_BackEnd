@@ -1,5 +1,6 @@
 package loolu.loolu_backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -50,6 +51,11 @@ public class User implements UserDetails {
     @Schema(description = "User's username or nickname for logging in", example = "Sancos")
     @Column(name = "username", unique = true, nullable = false)
     private String username;
+//**** Vyacheslav *****************************
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Cart cart;
+//*********************************
 
     private String avatar;
 

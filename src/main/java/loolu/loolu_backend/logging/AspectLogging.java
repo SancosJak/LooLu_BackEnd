@@ -16,6 +16,22 @@ public class AspectLogging {
     private final Logger logger = LoggerFactory.getLogger(AspectLogging.class);
 
     //******************************************************** Vyacheslav **************************
+    //Pointcut for Domain.User
+    @Pointcut("execution(* loolu.loolu_backend.domain.User.User(..))")
+    public void DomainUser() {
+    }
+
+    @AfterReturning(value = "DomainUser()", returning = "result")
+    public void afterReturningCartControllerUser(Object result) {
+        logger.info("=== Vyacheslav === Method User of the class User successfully returned product {}", result);
+    }
+
+    @AfterThrowing(value = "DomainUser()", throwing = "e")
+    public void afterThrowingExceptionWhileGettingCartControllerUser(Exception e) {
+        logger.info("=== Vyacheslav === Method User of the class User threw an exception while getting product: message - {}", e.getMessage());
+    }
+
+
     //Pointcut for CartController.AaddItemToCart
     @Pointcut("execution(* loolu.loolu_backend.controllers.CartController.addItemToCart(..))")
     public void CartControllerAaddItemToCart() {

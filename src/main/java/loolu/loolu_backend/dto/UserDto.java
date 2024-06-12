@@ -18,6 +18,7 @@ public class UserDto {
     private String lastName;
     private String email;
     private String role;
+    private String avatar;
 
     @Override
     public boolean equals(Object o) {
@@ -42,6 +43,7 @@ public class UserDto {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", avatar path='" + avatar + '\'' +
                 '}';
     }
 }

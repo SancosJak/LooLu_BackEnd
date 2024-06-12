@@ -3,6 +3,7 @@ package loolu.loolu_backend.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,11 +32,11 @@ public class User implements UserDetails {
     private Integer id;
 
     @Schema(description = "User's first name", example = "Sasha")
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Schema(description = "User's last name", example = "Ivanyo")
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Schema(description = "User's email address", example = "sasha@example.com")
@@ -43,14 +44,19 @@ public class User implements UserDetails {
     private String email;
 
     @Schema(description = "User's raw password for logging in", example = "111")
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Setter
     @Schema(description = "User's username or nickname for logging in", example = "Sancos")
     @Column(name = "username", unique = true, nullable = false)
     private String username;
-//*************** Vyacheslav *****************************
+
+    //*************** Vyacheslav *************************
+    @Schema(description = "User's path", example = "Path")
+    @Column(name = "avatar")
+    private String avatar;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Cart cart;

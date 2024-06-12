@@ -15,7 +15,7 @@ import java.util.List;
 public class AspectLogging {
     private final Logger logger = LoggerFactory.getLogger(AspectLogging.class);
 
-    //******************************************************** Vyacheslav **************************
+    //***************************************** Vyacheslav **************************
     //Pointcut for Domain.User
     @Pointcut("execution(* loolu.loolu_backend.domain.User.User(..))")
     public void DomainUser() {

@@ -51,7 +51,12 @@ public class User implements UserDetails {
     @Schema(description = "User's username or nickname for logging in", example = "Sancos")
     @Column(name = "username", unique = true, nullable = false)
     private String username;
-//*************** Vyacheslav *****************************
+
+    //*************** Vyacheslav *************************
+    @Schema(description = "User's path", example = "Path")
+    @Column(name = "avatar")
+    private String avatar;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Cart cart;

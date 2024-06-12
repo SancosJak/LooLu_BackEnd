@@ -52,7 +52,7 @@ public class User implements UserDetails {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    //*************** Vyacheslav *************************
+    //*************** Vyacheslav ************************
     @Schema(description = "User's path", example = "Path")
     @Column(name = "avatar")
     private String avatar;

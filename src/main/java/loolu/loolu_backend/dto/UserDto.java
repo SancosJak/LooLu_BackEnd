@@ -43,7 +43,7 @@ public class UserDto {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", avatar path ='" + avatar + '\'' +
+                ", avatar path='" + avatar + '\'' +
                 '}';
     }
 }

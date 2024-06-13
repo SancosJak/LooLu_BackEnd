@@ -15,4 +15,7 @@ public class NewUserDto {
     @NotNull
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$")
     private String password;
+
+    private String avatar;
+
 }

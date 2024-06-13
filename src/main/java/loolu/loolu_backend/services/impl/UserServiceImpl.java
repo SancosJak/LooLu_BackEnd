@@ -37,6 +37,7 @@ public class UserServiceImpl {
             user.setEmail(userDetails.getEmail());
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
+            user.setAvatar(userDetails.getAvatar());
             return userRepository.save(user);
         }
         return null;

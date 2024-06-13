@@ -17,5 +17,4 @@ public class NewUserDto {
     private String password;
 
     private String avatar;
-
 }

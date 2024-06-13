@@ -42,7 +42,6 @@ public class UserServiceImpl {
         }
         return null;
     }
-
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }

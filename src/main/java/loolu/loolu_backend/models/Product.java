@@ -1,6 +1,8 @@
 package loolu.loolu_backend.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +25,8 @@ public class Product {
     private String title;
 
     @Column(name = "price", nullable = false)
+    @NotNull(message = "Price cannot be null")
+    @Min(value = 1, message = "Price should not be less than 0 or equal to 0")
     private Double price;
 
     @Column(name = "description", nullable = false)

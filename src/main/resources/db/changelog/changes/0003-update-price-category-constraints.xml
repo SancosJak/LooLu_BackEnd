@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Добавление ограничений для поля price -->
+    <changeSet id="0003-add-price-constraints" author="loolu">
+
+        <!-- Установка минимального значения для поля price -->
+        <sql>
+            ALTER TABLE products
+                ADD CONSTRAINT CHK_price_min CHECK (price >= 0);
+        </sql>
+
+        <!-- Проверка на отрицательные значения для поля price -->
+        <sql>
+            ALTER TABLE products
+                ADD CONSTRAINT CHK_price_non_negative CHECK (price >= 0);
+        </sql>
+
+    </changeSet>
+
+    <!-- Исправление сортировки категорий -->
+    <changeSet id="0005-fix-category-sorting" author="loolu">
+
+        <!-- Установка корректной сортировки для категорий -->
+        <sql>
+            UPDATE categories
+            SET id = id + 1000
+            WHERE id = 0;
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

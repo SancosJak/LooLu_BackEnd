@@ -2,6 +2,7 @@ package loolu.loolu_backend.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import loolu.loolu_backend.models.Product;
 import loolu.loolu_backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class ProductController {
             description = "Add a new product to the database"
     )
     @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product) {
         Product savedProduct = productService.saveProduct(product);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
@@ -70,7 +71,7 @@ public class ProductController {
             description = "Update an existing product by its ID"
     )
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid@RequestBody Product product) {
         Product existingProduct = productService.getProductById(id);
         if (existingProduct != null) {
             product.setId(id);

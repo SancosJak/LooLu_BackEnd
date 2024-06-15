@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "use-query-params": "^2.2.1"
+  }
+}

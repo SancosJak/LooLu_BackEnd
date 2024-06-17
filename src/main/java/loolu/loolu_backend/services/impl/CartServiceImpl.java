@@ -60,12 +60,19 @@ public class CartServiceImpl implements CartService {
     public CartItemDto deleteItemFromCart(Long itemId) {
         CartProduct cartProduct = cartProductRepository.findById(itemId).orElseThrow(() -> new RuntimeException("Cart item not found"));
         cartProductRepository.delete(cartProduct);
+
+        Cart cart = cartRepository.findById(cartProduct.getCart().getId()).orElseGet(() -> {
+            return null;
+        });
+        cartRepository.delete(cart);
+
         return new CartItemDto(cartProduct.getId(), cartProduct.getCart().getId(), cartProduct.getProduct().getId(), cartProduct.getQuantity());
     }
 
     @Override
     public CartItemDto clearCart() {
         cartProductRepository.deleteAll();
+        cartRepository.deleteAll();
         return null;
     }
 

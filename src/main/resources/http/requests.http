@@ -1,37 +1,18 @@
-### user Add
-POST http://localhost:8080/api/users
-Content-Type: application/json
-
-{
-  "firstName": "Sasha",
-  "lastName": "Ivanyo",
-  "email": "sasha@example.com",
-  "password": "Qwerty!123",
-  "username": "sasha.ivanov",
-  "avatarPath": "/avatar/user1.png"
-}
-
 ### user registration
 POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
-  "email": "sasha@example.com",
-  "password": "Qwerty!123"
+  "email": "anatoli@mail.com",
+  "password": "Qwerty!007"
 }
 
 ### add Product to cart
 POST http://localhost:8080/api/cart
-Content-Type: application/json
 
 {
-  "cartId": 1,
-  "productId": 3,
-  "quantity": 13
+  "id": 0,
+  "cartId": 0,
+  "productId": 5,
+  "quantity": 1
 }
-
-### Delete Product from carts
-DELETE http://localhost:8080/api/cart/1
-
-### Delete All Product from carts
-DELETE http://localhost:8080/api/cart/clear

@@ -1,3 +1,4 @@
+
 package loolu.loolu_backend.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,7 +42,9 @@ public class ProductController {
             @RequestParam(required = false) Double price_max,
             @RequestParam(required = false) Long categoryId) {
 
-        List<Product> filteredProducts = productService.filterProducts(title, price, price_min, price_max, categoryId);
+        List<Product> filteredProducts;
+        productService.filterProducts(title, price, price_min, price_max, categoryId);
+
 
         if (price_min != null && price_max != null) {
             filteredProducts = productService.filterProducts(title, null, price_min, price_max, categoryId);
@@ -93,17 +96,34 @@ public class ProductController {
             summary = "Update an existing product",
             description = "Update an existing product by its ID"
     )
+
+
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
         Product existingProduct = productService.getProductById(id);
         if (existingProduct != null) {
-            product.setId(id);
-            Product updatedProduct = productService.saveProduct(product);
-            return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+            // Проверяем каждое поле и обновляем только то, что изменилось
+            if (updatedProduct.getTitle() != null) {
+                existingProduct.setTitle(updatedProduct.getTitle());
+            }
+            if (updatedProduct.getDescription() != null) {
+                existingProduct.setDescription(updatedProduct.getDescription());
+            }
+            if (updatedProduct.getPrice() != null) {
+                existingProduct.setPrice(updatedProduct.getPrice());
+            }
+            if (updatedProduct.getCategory() != null) {
+                existingProduct.setCategory(updatedProduct.getCategory());
+            }
+
+            // Сохраняем обновленный продукт
+            Product savedProduct = productService.saveProduct(existingProduct);
+            return new ResponseEntity<>(savedProduct, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @Operation(
             summary = "Delete a product",

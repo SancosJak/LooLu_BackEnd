@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -32,53 +32,53 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(Long id) {
         Object obj = picturesRepository.findById(1L);
         Optional<Product> optionalProduct = productRepository.findById(id);
-        return optionalProduct.orElse(null);
+        return optionalProduct .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
     }
-
     @Override
     public Product saveProduct(Product product) {
+        if (product.getTitle() == null || product.getTitle().isEmpty()) {
+            throw new IllegalArgumentException("Product title is required");
+        }
+
+        if (product.getPrice() == null || product.getPrice() <= 0) {
+            throw new IllegalArgumentException("Product price must be greater than zero");
+        }
+
+        if (product.getCategory() == null) {
+            throw new IllegalArgumentException("Product category is required");
+        }
+
         return productRepository.save(product);
     }
 
     @Override
     public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
         productRepository.deleteById(id);
     }
 
     @Override
     public List<Product> filterProducts(String title, Double price, Double price_min, Double price_max, Long categoryId) {
-        List<Product> products = productRepository.findAll();
-
-        // Фильтрация по названию
-        if (title != null) {
-            products = products.stream()
-                    .filter(product -> product.getTitle().toLowerCase().contains(title.toLowerCase()))
-                    .collect(Collectors.toList());
+        if (title != null && price_min != null && price_max != null) {
+            if (price_min > price_max) {
+                throw new IllegalArgumentException("Minimum price cannot be greater than maximum price");
+            }
+            return productRepository.findProductsByTitleAndPriceBetween(title, price_min, price_max);
+        } else if (title != null && price != null) {
+            return productRepository.findProductsByTitleAndPriceBetween(title, price, price);
+        } else if (title != null) {
+            return productRepository.findByTitleContainingIgnoreCase(title);
+        } else if (price_min != null && price_max != null) {
+            if (price_min > price_max) {
+                throw new IllegalArgumentException("Minimum price cannot be greater than maximum price");
+            }
+            return productRepository.findByPriceBetween(price_min, price_max);
+        } else if (categoryId != null) {
+            return productRepository.findByCategory_Id(categoryId);
+        } else {
+            return productRepository.findAll();
         }
-
-        // Фильтрация по цене
-        if (price != null) {
-            products = products.stream()
-                    .filter(product -> product.getPrice() == price)
-                    .collect(Collectors.toList());
-        }
-
-        // Фильтрация по диапазону цен
-        if (price_min != null && price_max != null) {
-            products = products.stream()
-                    .filter(product -> product.getPrice() >= price_min && product.getPrice() <= price_max)
-                    .collect(Collectors.toList());
-        }
-
-        // Фильтрация по категории
-        if (categoryId != null) {
-            products = products.stream()
-                    .filter(product -> product.getCategory().getId() == categoryId)
-                    .collect(Collectors.toList());
-        }
-
-        return products;
     }
-
-
 }

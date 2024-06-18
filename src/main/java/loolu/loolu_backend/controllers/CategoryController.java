@@ -2,6 +2,8 @@ package loolu.loolu_backend.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import loolu.loolu_backend.models.Category;
 import loolu.loolu_backend.services.CategoryService;
@@ -72,5 +74,16 @@ public class CategoryController {
             @Parameter(description = "ID of the category to delete") @PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
+    }
+    @Operation(summary = "Find categories by name", description = "Retrieve a list of categories by their name")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved categories"),
+            @ApiResponse(responseCode = "404", description = "No categories found with the specified name")
+    })
+    @GetMapping("/search")
+    public ResponseEntity<List<Category>> findCategoriesByName(
+            @Parameter(description = "Name of the category to search") @RequestParam String name) {
+        List<Category> categories = categoryService.findCategoriesByName(name);
+        return categories.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(categories);
     }
 }

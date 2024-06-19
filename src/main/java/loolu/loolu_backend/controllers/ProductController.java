@@ -2,6 +2,8 @@ package loolu.loolu_backend.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import loolu.loolu_backend.dto.ProductDTO;
+import loolu.loolu_backend.dto.ProductRequest;
 import loolu.loolu_backend.models.Picture;
 import loolu.loolu_backend.models.Product;
 import loolu.loolu_backend.repositories.PictureRepository;
@@ -9,8 +11,11 @@ import loolu.loolu_backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,7 +39,7 @@ public class ProductController {
             description = "Retrieve all products available in the database"
     )
     @GetMapping
-    public ResponseEntity<List<Product>> getFilteredProducts(
+    public ResponseEntity<List<ProductDTO>> getFilteredProducts(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) Double price,
             @RequestParam(required = false) Double price_min,
@@ -43,15 +48,29 @@ public class ProductController {
 
         List<Product> filteredProducts = productService.filterProducts(title, price, price_min, price_max, categoryId);
 
-        if (price_min != null && price_max != null) {
-            filteredProducts = productService.filterProducts(title, null, price_min, price_max, categoryId);
-        } else if (price != null) {
-            filteredProducts = productService.filterProducts(title, price, null, null, categoryId);
-        } else {
-            filteredProducts = productService.filterProducts(title, null, null, null, categoryId);
+        List<ProductDTO> productDTOs = new ArrayList<>();
+        for (Product product : filteredProducts) {
+            ProductDTO productDTO = new ProductDTO(
+                    product.getId(),
+                    product.getTitle(),
+                    product.getPrice(),
+                    product.getDescription(),
+                    product.getCategory().getId(),
+                    product.getCategory().getName(),
+                    new ArrayList<>()
+            );
+
+            Set<Picture> pictures = pictureRepository.findByProduct(product);
+            for (Picture picture : pictures) {
+                picture.setProduct(null);
+                productDTO.getImageUrls().add(picture.getUrl());
+            }
+
+            product.setPicture(pictures);
+            productDTOs.add(productDTO);
         }
 
-        return new ResponseEntity<>(filteredProducts, HttpStatus.OK);
+        return new ResponseEntity<>(productDTOs, HttpStatus.OK);
     }
 
     @Operation(
@@ -59,23 +78,27 @@ public class ProductController {
             description = "Retrieve a single product by its ID"
     )
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
         Product product = productService.getProductById(id);
 
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+        ProductDTO productDTO = new ProductDTO(product.getId(),
+                product.getTitle(), product.getPrice(), product.getDescription(), product.getCategory().getId(), product.getCategory().getName(), new ArrayList<>());
+
         Set<Picture> pictures = pictureRepository.findByProduct(product);
 
         // Пройти по найденным изображениям и сбросить ссылку на продукт
         for (Picture picture : pictures) {
             picture.setProduct(null);
+            productDTO.getImageUrls().add(picture.getUrl());
         }
 
         product.setPicture(pictures);
 
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
 
@@ -84,8 +107,27 @@ public class ProductController {
             description = "Add a new product to the database"
     )
     @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> addProduct(@RequestBody ProductRequest productRequest) {
+        // Создаем новый продукт на основе данных из запроса
+        Product product = new Product();
+        product.setTitle(productRequest.getTitle());
+        product.setPrice(productRequest.getPrice());
+        product.setDescription(productRequest.getDescription());
+        product.setCategory(productService.getCategoryById(productRequest.getCategoryId()));
+
+        // Создаем список объектов Picture на основе переданных URL изображений
+        Set<Picture> pictures = new HashSet<>();
+        for (String imageUrl : productRequest.getImages()) {
+            Picture picture = new Picture();
+            picture.setUrl(imageUrl);
+            picture.setProduct(product); // Устанавливаем связь с продуктом
+            pictures.add(picture);
+        }
+        product.setPicture(pictures);
+
+        // Сохраняем продукт в базе данных
         Product savedProduct = productService.saveProduct(product);
+
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 

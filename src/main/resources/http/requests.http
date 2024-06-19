@@ -25,9 +25,9 @@ POST http://localhost:8080/api/cart
 Content-Type: application/json
 
 {
-  "cartId": 3,
-  "productId": 1,
-  "quantity": 11
+  "cartId": 1,
+  "productId": 3,
+  "quantity": 13
 }
 
 ### Delete Product from carts

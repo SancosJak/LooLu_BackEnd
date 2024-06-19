@@ -46,7 +46,7 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Schema(description = "User's raw password for logging in", example = "111") //Password1!
+    @Schema(description = "User's raw password for logging in", example = "Qwerty!123") //Password1!
     @NotBlank(message = "Password is mandatory")
     @Column(name = "password", nullable = false)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$")

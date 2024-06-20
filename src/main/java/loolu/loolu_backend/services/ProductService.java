@@ -12,6 +12,10 @@ public interface ProductService {
     List<Product> filterProducts(String title, Double price, Double price_min, Double price_max, Long categoryId);
 //    List<Product> findProductsByTitle(String title);
 //    List<Product> findProductsByCategory(Long categoryId);
-//    List<Product> findProductsByPriceBetween(Double minPrice, Double maxPrice);
+    List<Product> findProductsByPriceBetween(Double minPrice, Double maxPrice);
 //    List<Product> findProductsByTitleAndPriceBetween(String title, Double minPrice, Double maxPrice);
+
+    List<Product> findByPriceGreaterThanEqual(Double minPrice);
+    Double findMinPrice();
+    Double findMaxPrice();
 }

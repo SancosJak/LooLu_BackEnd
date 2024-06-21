@@ -1,0 +1,337 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0006-insert-data" author="loolu" runOnChange="true">
+        <!-- Inserting Categories -->
+        <insert tableName="categories">
+            <column name="name" value="Games"/>
+            <column name="image" value="https://f.vividscreen.info/soft/37fdd5fd505bc08fe79bd75e502cb99a/Xbox-Games-1280x1024.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Electronics"/>
+            <column name="image" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Fitness"/>
+            <column name="image" value="https://www.sbsmobile.com/por/234394-thickbox_default/vital-fit-de.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Computers"/>
+            <column name="image" value="https://m.media-amazon.com/images/I/714sa4fUFNL._AC_UF894,1000_QL80_.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Gadgets"/>
+            <column name="image" value="https://m.media-amazon.com/images/I/71ZRus2YNcL._AC_UF894,1000_QL80_.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Gaming Consoles"/>
+            <column name="image" value="https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_141517940?x=1800y=1800format=jpgquality=80sp=yesstrip=yesex=1800ey=1800align=centerresizesourceunsharp=1.5x1+0.7+0.02"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Wearable Tech"/>
+            <column name="image" value="https://i.otto.de/i/otto/f0b12f2a-3638-43b2-9ceb-e686e95410d9?w=1078h=1078"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Clothing"/>
+            <column name="image" value="https://www.comfortschuh.de/$WS/top/websale8_shop-top/produkte/medien/bilder/gross/965202.JPG"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Audio"/>
+            <column name="image" value="https://media.cnn.com/api/v1/images/stellar/prod/airpods-max.jpg?c=16x9q=h_720,w_1280,c_fill"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Computer Accessories"/>
+            <column name="image" value="https://m.media-amazon.com/images/I/51KmxQjXBlL._AC_UF1000,1000_QL80_.jpg"/>
+        </insert>
+        <!-- Existing categories insertion code here -->
+
+        <!-- Inserting Products for Gaming Consoles -->
+        <insert tableName="products">
+            <column name="title" value="PlayStation 5"/>
+            <column name="price" value="499.99"/>
+            <column name="description" value="Latest generation PlayStation console with 4K gaming."/>
+            <column name="category_id" value="6"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Xbox Series X"/>
+            <column name="price" value="499.99"/>
+            <column name="description" value="High-performance Xbox console for gaming enthusiasts."/>
+            <column name="category_id" value="6"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Nintendo Switch"/>
+            <column name="price" value="299.99"/>
+            <column name="description" value="Versatile gaming console for both home and portable use."/>
+            <column name="category_id" value="6"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="PlayStation 4"/>
+            <column name="price" value="299.99"/>
+            <column name="description" value="Previous generation PlayStation console with extensive game library."/>
+            <column name="category_id" value="6"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Xbox One"/>
+            <column name="price" value="299.99"/>
+            <column name="description" value="Previous generation Xbox console with a wide variety of games."/>
+            <column name="category_id" value="6"/>
+        </insert>
+
+        <!-- Inserting Products for Wearable Tech -->
+        <insert tableName="products">
+            <column name="title" value="Apple Watch Series 7"/>
+            <column name="price" value="399.99"/>
+            <column name="description" value="Latest model of Apple Watch with advanced health tracking."/>
+            <column name="category_id" value="7"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Samsung Galaxy Watch 4"/>
+            <column name="price" value="249.99"/>
+            <column name="description" value="Smartwatch with fitness tracking and health monitoring."/>
+            <column name="category_id" value="7"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Fitbit Charge 5"/>
+            <column name="price" value="149.99"/>
+            <column name="description" value="Fitness tracker with stress management tools."/>
+            <column name="category_id" value="7"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Garmin Venu 2"/>
+            <column name="price" value="349.99"/>
+            <column name="description" value="GPS smartwatch with advanced health monitoring features."/>
+            <column name="category_id" value="7"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Amazfit Bip U Pro"/>
+            <column name="price" value="69.99"/>
+            <column name="description" value="Affordable smartwatch with built-in GPS and SpO2 sensor."/>
+            <column name="category_id" value="7"/>
+        </insert>
+
+        <!-- Inserting Products for Clothing -->
+        <insert tableName="products">
+            <column name="title" value="Men's T-Shirt"/>
+            <column name="price" value="19.99"/>
+            <column name="description" value="Comfortable cotton t-shirt for men."/>
+            <column name="category_id" value="8"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Women's Jeans"/>
+            <column name="price" value="49.99"/>
+            <column name="description" value="Stylish and durable jeans for women."/>
+            <column name="category_id" value="8"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Men's Jacket"/>
+            <column name="price" value="99.99"/>
+            <column name="description" value="Warm and stylish jacket for men."/>
+            <column name="category_id" value="8"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Women's Dress"/>
+            <column name="price" value="59.99"/>
+            <column name="description" value="Elegant dress for women."/>
+            <column name="category_id" value="8"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Men's Sneakers"/>
+            <column name="price" value="79.99"/>
+            <column name="description" value="Comfortable and stylish sneakers for men."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <!-- Inserting Products for Audio -->
+        <insert tableName="products">
+            <column name="title" value="Sony WH-1000XM4"/>
+            <column name="price" value="349.99"/>
+            <column name="description" value="Noise-cancelling over-ear headphones."/>
+            <column name="category_id" value="9"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Bose QuietComfort 35 II"/>
+            <column name="price" value="299.99"/>
+            <column name="description" value="Wireless noise-cancelling headphones."/>
+            <column name="category_id" value="9"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="JBL Flip 5"/>
+            <column name="price" value="119.99"/>
+            <column name="description" value="Portable Bluetooth speaker with powerful sound."/>
+            <column name="category_id" value="9"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Apple AirPods Pro"/>
+            <column name="price" value="249.99"/>
+            <column name="description" value="In-ear noise-cancelling earbuds with wireless charging case."/>
+            <column name="category_id" value="9"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Sony SRS-XB43"/>
+            <column name="price" value="229.99"/>
+            <column name="description" value="Waterproof Bluetooth speaker with extra bass."/>
+            <column name="category_id" value="9"/>
+        </insert>
+
+        <!-- Inserting Products for Computer Accessories -->
+        <insert tableName="products">
+            <column name="title" value="Logitech MX Master 3"/>
+            <column name="price" value="99.99"/>
+            <column name="description" value="Advanced wireless mouse with ergonomic design."/>
+            <column name="category_id" value="10"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Corsair K95 RGB Platinum"/>
+            <column name="price" value="199.99"/>
+            <column name="description" value="Mechanical gaming keyboard with RGB backlighting."/>
+            <column name="category_id" value="10"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Razer Goliathus Speed"/>
+            <column name="price" value="29.99"/>
+            <column name="description" value="Large gaming mouse pad with smooth surface."/>
+            <column name="category_id" value="10"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="Anker PowerCore 10000"/>
+            <column name="price" value="49.99"/>
+            <column name="description" value="Portable charger with high capacity."/>
+            <column name="category_id" value="10"/>
+        </insert>
+        <insert tableName="products">
+            <column name="title" value="SanDisk Extreme Pro"/>
+            <column name="price" value="79.99"/>
+            <column name="description" value="Fast USB 3.1 flash drive with 256GB capacity."/>
+            <column name="category_id" value="10"/>
+        </insert>
+
+        <!-- Inserting Pictures -->
+        <!-- Product: PlayStation 5 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/619BkvKW35L._AC_SL1500_.jpg"/>
+            <column name="product_id" value="1"/>
+        </insert>
+        <!-- Product: Xbox Series X -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61JGKhqxHxL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="2"/>
+        </insert>
+        <!-- Product: Nintendo Switch -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61-PblYntsL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="3"/>
+        </insert>
+        <!-- Product: PlayStation 4 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71PGvPXpk5L._AC_SL1500_.jpg"/>
+            <column name="product_id" value="4"/>
+        </insert>
+        <!-- Product: Xbox One -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61wDgKoUZRL.jpg"/>
+            <column name="product_id" value="5"/>
+        </insert>
+        <!-- Product: Apple Watch Series 7 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71u44mdDBDL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="6"/>
+        </insert>
+        <!-- Product: Samsung Galaxy Watch 4 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61Ye1ngmHvL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="7"/>
+        </insert>
+        <!-- Product: Fitbit Charge 5 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/51t0lfGM5ML._AC_SL1000_.jpg"/>
+            <column name="product_id" value="8"/>
+        </insert>
+        <!-- Product: Garmin Venu 2 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61QunEmrB6L._AC_SL1000_.jpg"/>
+            <column name="product_id" value="9"/>
+        </insert>
+        <!-- Product: Amazfit Bip U Pro -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61+Xb57x8lL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="10"/>
+        </insert>
+        <!-- Product: Men's T-Shirt -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/81ZXjTgJNHL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="11"/>
+        </insert>
+        <!-- Product: Women's Jeans -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71HblAHs5xL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="12"/>
+        </insert>
+        <!-- Product: Men's Jacket -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71HblAHs5xL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="13"/>
+        </insert>
+        <!-- Product: Women's Dress -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61BDoVh0ufL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="14"/>
+        </insert>
+        <!-- Product: Men's Sneakers -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/81ZXjTgJNHL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="15"/>
+        </insert>
+        <!-- Product: Sony WH-1000XM4 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg"/>
+            <column name="product_id" value="16"/>
+        </insert>
+        <!-- Product: Bose QuietComfort 35 II -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/81+jNVOUsJL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="17"/>
+        </insert>
+        <!-- Product: JBL Flip 5 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71oo3k4%2B9zL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="18"/>
+        </insert>
+        <!-- Product: Apple AirPods Pro -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71zny7BTRlL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="19"/>
+        </insert>
+        <!-- Product: Sony SRS-XB43 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71PVpY0Z3kL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="20"/>
+        </insert>
+        <!-- Product: Logitech MX Master 3 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61H9UVs4qPL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="21"/>
+        </insert>
+        <!-- Product: Corsair K95 RGB Platinum -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/81MZ1D4SZYL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="22"/>
+        </insert>
+        <!-- Product: Razer Goliathus Speed -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71Pq-yZf0sL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="23"/>
+        </insert>
+        <!-- Product: Anker PowerCore 10000 -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/61uY4+HwczL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="24"/>
+        </insert>
+        <!-- Product: SanDisk Extreme Pro -->
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71pF+GGef5L._AC_SL1500_.jpg"/>
+            <column name="product_id" value="25"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

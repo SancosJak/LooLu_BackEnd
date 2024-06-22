@@ -13,10 +13,10 @@
             <column name="name" value="Electronics"/>
             <column name="image" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
         </insert>
-        <insert tableName="categories">
-            <column name="name" value="Fitness"/>
-            <column name="image" value="https://www.sbsmobile.com/por/234394-thickbox_default/vital-fit-de.jpg"/>
-        </insert>
+<!--        <insert tableName="categories">-->
+<!--            <column name="name" value="Fitness"/>-->
+<!--            <column name="image" value="https://www.sbsmobile.com/por/234394-thickbox_default/vital-fit-de.jpg"/>-->
+<!--        </insert>-->
         <insert tableName="categories">
             <column name="name" value="Computers"/>
             <column name="image" value="https://m.media-amazon.com/images/I/714sa4fUFNL._AC_UF894,1000_QL80_.jpg"/>
@@ -333,5 +333,6 @@
             <column name="url" value="https://m.media-amazon.com/images/I/71pF+GGef5L._AC_SL1500_.jpg"/>
             <column name="product_id" value="25"/>
         </insert>
+
     </changeSet>
 </databaseChangeLog>

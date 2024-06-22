@@ -38,25 +38,9 @@
         </insert>
         <insert tableName="categories">
             <column name="id" value="7"/>
-            <column name="name" value="Wearable Tech"/>
+            <column name="name" value="Sale"/>
             <column name="image" value="https://i.otto.de/i/otto/f0b12f2a-3638-43b2-9ceb-e686e95410d9?w=1078h=1078"/>
         </insert>
-        <insert tableName="categories">
-            <column name="id" value="8"/>
-            <column name="name" value="Clothing"/>
-            <column name="image" value="https://www.comfortschuh.de/$WS/top/websale8_shop-top/produkte/medien/bilder/gross/965202.JPG"/>
-        </insert>
-        <insert tableName="categories">
-            <column name="id" value="9"/>
-            <column name="name" value="Audio"/>
-            <column name="image" value="https://media.cnn.com/api/v1/images/stellar/prod/airpods-max.jpg?c=16x9q=h_720,w_1280,c_fill"/>
-        </insert>
-        <insert tableName="categories">
-            <column name="id" value="10"/>
-            <column name="name" value="Computer Accessories"/>
-            <column name="image" value="https://m.media-amazon.com/images/I/51KmxQjXBlL._AC_UF1000,1000_QL80_.jpg"/>
-        </insert>
-
 
         <!-- Inserting Products -->
         <insert tableName="products">
@@ -210,15 +194,15 @@
         <!-- Product: Gaming Headset -->
         <insert tableName="pictures">
             <column name="url" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
-            <column name="product_id" value="8"/>
+            <column name="product_id" value="5"/>
         </insert>
         <insert tableName="pictures">
             <column name="url" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
-            <column name="product_id" value="8"/>
+            <column name="product_id" value="5"/>
         </insert>
         <insert tableName="pictures">
             <column name="url" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
-            <column name="product_id" value="8"/>
+            <column name="product_id" value="5"/>
         </insert>
 
         <!-- Вставка ролей -->

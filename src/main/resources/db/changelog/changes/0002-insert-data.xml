@@ -14,10 +14,7 @@
             <column name="name" value="Electronics"/>
             <column name="image" value="https://m.media-amazon.com/images/I/31XIqfc70vL._SY300_SX300_QL70_ML2_.jpg"/>
         </insert>
-        <insert tableName="categories">
-            <column name="name" value="Fitness"/>
-            <column name="image" value="https://www.sbsmobile.com/por/234394-thickbox_default/vital-fit-de.jpg"/>
-        </insert>
+
         <insert tableName="categories">
             <column name="name" value="Computers"/>
             <column name="image" value="https://m.media-amazon.com/images/I/714sa4fUFNL._AC_UF894,1000_QL80_.jpg"/>
@@ -30,14 +27,11 @@
             <column name="name" value="Gaming Consoles"/>
             <column name="image" value="https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_141517940?x=1800y=1800format=jpgquality=80sp=yesstrip=yesex=1800ey=1800align=centerresizesourceunsharp=1.5x1+0.7+0.02"/>
         </insert>
-        <insert tableName="categories">
-            <column name="name" value="Wearable Tech"/>
-            <column name="image" value="https://i.otto.de/i/otto/f0b12f2a-3638-43b2-9ceb-e686e95410d9?w=1078h=1078"/>
-        </insert>
-        <insert tableName="categories">
-            <column name="name" value="Clothing"/>
-            <column name="image" value="https://www.comfortschuh.de/$WS/top/websale8_shop-top/produkte/medien/bilder/gross/965202.JPG"/>
-        </insert>
+<!--        <insert tableName="categories">-->
+<!--            <column name="name" value="Wearable Tech"/>-->
+<!--            <column name="image" value="https://i.otto.de/i/otto/f0b12f2a-3638-43b2-9ceb-e686e95410d9?w=1078h=1078"/>-->
+<!--        </insert>-->
+
         <insert tableName="categories">
             <column name="name" value="Audio"/>
             <column name="image" value="https://media.cnn.com/api/v1/images/stellar/prod/airpods-max.jpg?c=16x9q=h_720,w_1280,c_fill"/>
@@ -45,6 +39,10 @@
         <insert tableName="categories">
             <column name="name" value="Computer Accessories"/>
             <column name="image" value="https://m.media-amazon.com/images/I/51KmxQjXBlL._AC_UF1000,1000_QL80_.jpg"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Sales"/>
+            <column name="image" value="https://clipart-library.com/img1/845447.jpg"/>
         </insert>
 
 

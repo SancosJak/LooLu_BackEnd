@@ -73,10 +73,9 @@ public class User implements UserDetails {
             accessMode = Schema.AccessMode.READ_ONLY
     )
     private Set<Role> roles = new HashSet<>();
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cart carts;
-
-
 
     @Schema(
             description = "List of authorities granted to user",
@@ -144,7 +143,7 @@ public class User implements UserDetails {
                 Objects.equals(password, user.password) &&
                 Objects.equals(username, user.username) &&
                 Objects.equals(avatarPath, user.avatarPath);
-               // Objects.equals(roles, user.roles);
+        // Objects.equals(roles, user.roles);
     }
 
     @Override
@@ -165,11 +164,4 @@ public class User implements UserDetails {
                 //", roles=" + roles +
                 '}';
     }
-
-//
-//    @OneToOne(mappedBy = "user")
-//    private Set<Cart> carts;
-//
-//    @OneToMany(mappedBy = "user")
-//    private Set<UserOrder> orders;
 }

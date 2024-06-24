@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import loolu.loolu_backend.domain.Role;
 import loolu.loolu_backend.domain.User;
 import loolu.loolu_backend.dto.UserDto;
+import loolu.loolu_backend.models.Cart;
 import loolu.loolu_backend.repositories.RoleRepository;
 import loolu.loolu_backend.repositories.UserRepository;
 import loolu.loolu_backend.services.impl.UserService;
@@ -83,6 +84,11 @@ public class UserController {
             userRole.setName("ROLE_USER");
             roleRepository.save(userRole);
         }
+
+        Cart cart = new Cart();
+        cart.setUser(user);
+
+        user.setCarts(cart);
 
         user.getRoles().add(userRole);
         User createdUser = userService.createUser(user);

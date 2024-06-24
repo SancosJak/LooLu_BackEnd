@@ -5,9 +5,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import loolu.loolu_backend.domain.Role;
 import loolu.loolu_backend.domain.User;
 import loolu.loolu_backend.dto.LoginRequestDto;
 import loolu.loolu_backend.dto.UserDto;
+import loolu.loolu_backend.dto.UserProfileDto;
 import loolu.loolu_backend.security.sec_dto.AuthInfo;
 import loolu.loolu_backend.security.sec_dto.RefreshRequestDto;
 import loolu.loolu_backend.security.sec_dto.TokenResponseDto;
@@ -20,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Tag(name = "Authorization controller", description = "Controller for security operations, login/logout, getting new tokens etc")
@@ -89,15 +92,30 @@ public class AuthController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<User> getProfile() {
+    public ResponseEntity<UserProfileDto> getProfile() {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String userContent = (String) authentication.getPrincipal();
-//            return ResponseEntity.ok(userContent);
-            User user = userService.findByEmail(userContent);
-            return ResponseEntity.ok(user);
+            String userEmail = (String) authentication.getPrincipal();
+            User user = userService.findByEmail(userEmail);
+
+            if (user == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            UserProfileDto userProfileDto = new UserProfileDto();
+            userProfileDto.setId(user.getId());
+            userProfileDto.setEmail(user.getEmail());
+            userProfileDto.setFirstName(user.getFirstName());
+            userProfileDto.setLastName(user.getLastName());
+            userProfileDto.setUsername(user.getUsername());
+            userProfileDto.setPassword(user.getPassword());
+            userProfileDto.setAvatarPath(user.getAvatarPath());
+            userProfileDto.setCartId(user.getCarts() != null ? user.getCarts().getId() : null);
+            userProfileDto.setRoles(user.getRoles());
+
+            return ResponseEntity.ok(userProfileDto);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

@@ -1,31 +1,22 @@
-package loolu.loolu_backend.domain;
+package loolu.loolu_backend.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.*;
-import loolu.loolu_backend.models.Cart;
-import loolu.loolu_backend.models.UserOrder;
+import lombok.Getter;
+import lombok.Setter;
+import loolu.loolu_backend.domain.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
-@Schema(description = "User entity")
-@Entity(name = "DomainUser")
-@Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
 @Setter
 @Getter
-@Builder
-public class User implements UserDetails {
-
+public class UserProfileDto implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -73,9 +64,7 @@ public class User implements UserDetails {
             accessMode = Schema.AccessMode.READ_ONLY
     )
     private Set<Role> roles = new HashSet<>();
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Cart carts;
-
+    private Long cartId;
 
 
     @Schema(
@@ -131,45 +120,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(avatarPath, user.avatarPath);
-               // Objects.equals(roles, user.roles);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, username); //roles);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                ", avatarPath='" + avatarPath + '\'' +
-                //", roles=" + roles +
-                '}';
-    }
-
-//
-//    @OneToOne(mappedBy = "user")
-//    private Set<Cart> carts;
-//
-//    @OneToMany(mappedBy = "user")
-//    private Set<UserOrder> orders;
 }

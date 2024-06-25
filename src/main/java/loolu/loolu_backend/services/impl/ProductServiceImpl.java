@@ -80,9 +80,21 @@ public class ProductServiceImpl implements ProductService {
         // Фильтрация по цене
         if (price != null) {
             products = products.stream()
-                    .filter(product -> product.getPrice() == price)
+                    .filter(product -> product.getPrice().equals(price))
                     .collect(Collectors.toList());
         }
+
+        if (price_min != null  ) {
+            products = products.stream()
+                    .filter(product -> product.getPrice() >= price_min )
+                    .collect(Collectors.toList());
+        }
+        if (price_max != null  ) {
+            products = products.stream()
+                    .filter(product -> product.getPrice() <= price_max )
+                    .collect(Collectors.toList());
+        }
+
 
         // Фильтрация по диапазону цен
         if (price_min != null && price_max != null) {
@@ -90,6 +102,7 @@ public class ProductServiceImpl implements ProductService {
                     .filter(product -> product.getPrice() >= price_min && product.getPrice() <= price_max)
                     .collect(Collectors.toList());
         }
+
 
         // Фильтрация по категории
         if (categoryId != null) {
@@ -100,6 +113,18 @@ public class ProductServiceImpl implements ProductService {
 
         return products;
     }
+
+    @Override
+    public List<Product> findProductsByTitle(String title) {
+        return productRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    @Override
+    public List<Product> findProductsByPriceBetween(Double minPrice, Double maxPrice) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice);
+    }
+
+
 
 
 }

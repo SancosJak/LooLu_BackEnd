@@ -45,7 +45,7 @@
         <!-- Inserting Products in 'Games' category -->
         <insert tableName="products">
             <column name="title" value="The Witcher 3: Wild Hunt"/>
-            <column name="price" value="99.99"/>
+            <column name="price" value="100.99"/>
             <column name="description" value="Action role-playing game with rich storyline and open world."/>
             <column name="category_id" value="1"/>
         </insert>
@@ -53,7 +53,7 @@
 
         <insert tableName="products">
             <column name="title" value="Red Dead Redemption 2"/>
-            <column name="price" value="97.99"/>
+            <column name="price" value="120.99"/>
             <column name="description" value="Western-themed action-adventure game with stunning visuals."/>
             <column name="category_id" value="1"/>
         </insert>
@@ -61,7 +61,7 @@
 
         <insert tableName="products">
             <column name="title" value="FIFA 22"/>
-            <column name="price" value="98.99"/>
+            <column name="price" value="50.00"/>
             <column name="description" value="Football simulation game with realistic gameplay."/>
             <column name="category_id" value="1"/>
         </insert>
@@ -90,14 +90,14 @@
 
         <insert tableName="products">
             <column name="title" value="Super Mario Odyssey"/>
-            <column name="price" value="49.99"/>
+            <column name="price" value="15.00"/>
             <column name="description" value="Platform game featuring Mario with new gameplay features."/>
             <column name="category_id" value="1"/>
         </insert>
 
         <insert tableName="products">
             <column name="title" value="Minecraft"/>
-            <column name="price" value="19.99"/>
+            <column name="price" value="10.00"/>
             <column name="description" value="Sandbox game with blocky graphics and creative building."/>
             <column name="category_id" value="1"/>
         </insert>

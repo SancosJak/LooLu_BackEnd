@@ -2,6 +2,8 @@ package loolu.loolu_backend.services;
 
 import loolu.loolu_backend.models.Category;
 import loolu.loolu_backend.models.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -14,6 +16,9 @@ public interface ProductService {
     Product saveProduct(Product product);
     void deleteProduct(Long id);
     List<Product> filterProducts(String title, Double price, Double price_min, Double price_max, Long categoryId);
+    Page<Product> getProducts(Pageable pageable);
+
+
 //    List<Product> findProductsByTitle(String title);
 //    List<Product> findProductsByCategory(Long categoryId);
 //    List<Product> findProductsByPriceBetween(Double minPrice, Double maxPrice);

@@ -3,13 +3,17 @@ package loolu.loolu_backend.services.impl;
 import loolu.loolu_backend.models.Category;
 import loolu.loolu_backend.models.Product;
 import loolu.loolu_backend.repositories.CategoryRepository;
+import loolu.loolu_backend.repositories.PictureRepository;
 import loolu.loolu_backend.repositories.PicturesRepository;
 import loolu.loolu_backend.repositories.ProductRepository;
 import loolu.loolu_backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -80,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
         // Фильтрация по цене
         if (price != null) {
             products = products.stream()
-                    .filter(product -> product.getPrice() == price)
+                    .filter(product -> Objects.equals(product.getPrice(), price))
                     .collect(Collectors.toList());
         }
 
@@ -94,11 +98,16 @@ public class ProductServiceImpl implements ProductService {
         // Фильтрация по категории
         if (categoryId != null) {
             products = products.stream()
-                    .filter(product -> product.getCategory().getId() == categoryId)
+                    .filter(product -> Objects.equals(product.getCategory().getId(), categoryId))
                     .collect(Collectors.toList());
         }
 
         return products;
+    }
+
+    @Override
+    public Page<Product> getProducts(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
 

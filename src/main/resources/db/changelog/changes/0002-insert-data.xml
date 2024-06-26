@@ -84,6 +84,12 @@
             <column name="description" value="Surround sound gaming headset with noise-cancelling microphone."/>
             <column name="category_id" value="2"/>
         </insert>
+        <insert tableName="products">
+            <column name="title" value="Iphone 15 Pro Max"/>
+            <column name="price" value="1449.99"/>
+            <column name="description" value="The iPhone 15 Pro display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.12 inches diagonally (actual viewable area is less)."/>
+            <column name="category_id" value="2"/>
+        </insert>
 
         <!-- Inserting Pictures -->
         <!-- Product: Socks -->

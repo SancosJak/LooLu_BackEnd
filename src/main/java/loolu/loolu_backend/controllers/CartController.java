@@ -42,6 +42,7 @@ public class CartController {
                 .ok(cartProducts);
     }
 
+
     @Operation(summary = "Add item to cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Item added to cart successfully"),
@@ -101,14 +102,18 @@ public class CartController {
             @ApiResponse(responseCode = "200", description = "Cart item updated successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
-    @PutMapping("/{item-id}")
-    public ResponseEntity<CartItemDto> updateCartItem(@PathVariable("item-id") Long itemId, @RequestBody @Valid UpdateCartItemDto updateCartItem) {
+    @PutMapping("/{cart-id}/{item-id}")
+    public ResponseEntity<CartItemDto> updateCartItem(@PathVariable("cart-id") Long cartId, @PathVariable("item-id") Long itemId, @RequestBody @Valid UpdateCartItemDto updateCartItem) {
         try {
             return ResponseEntity
-                    .ok(cartService.updateCartItem(itemId, updateCartItem));
+                    .ok(cartService.updateCartItem(cartId, itemId, updateCartItem));
         } catch (IllegalArgumentException e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
+                    .body(null);
+        } catch (RuntimeException e) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
                     .body(null);
         }
     }

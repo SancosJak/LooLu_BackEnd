@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CartProductDto {
     private Long id;
+    private Long cartId;
     private Long productId;
     private Long quantity;
     // Можно добавить другие необходимые поля из CartProduct

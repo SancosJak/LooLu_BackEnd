@@ -19,5 +19,5 @@ public interface CartService {
 
     CartItemDto clearCart();
 
-    CartItemDto updateCartItem(Long itemId, UpdateCartItemDto cartItem);
+    CartItemDto updateCartItem(Long cartId, Long itemId, UpdateCartItemDto cartItem);
 }

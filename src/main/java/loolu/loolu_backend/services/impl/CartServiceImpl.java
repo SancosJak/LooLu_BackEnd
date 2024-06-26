@@ -120,7 +120,8 @@ public class CartServiceImpl implements CartService {
     public List<CartProductDto> getCartProductsDtoByCartId(Long cartId) {
         List<CartProduct> cartProducts = cartProductRepository.findByCartId(cartId);
         return cartProducts.stream()
-                .map(cp -> new CartProductDto(cp.getId(), cp.getProduct().getId(), cp.getQuantity()))
+                .map(cp -> new CartProductDto(cp.getId(), cartId, cp.getProduct().getId(), cp.getQuantity()))
                 .collect(Collectors.toList());
     }
+
 }

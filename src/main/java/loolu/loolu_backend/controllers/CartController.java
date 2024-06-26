@@ -28,7 +28,7 @@ public class CartController {
     @Operation(summary = "Get cart products by cart id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "List of cart products returned successfully"),
-            @ApiResponse(responseCode = "204", description = "No cart products found for cart")
+            @ApiResponse(responseCode = "404", description = "No cart products found for cart")
     })
     @GetMapping("/{cart-id}")
     public ResponseEntity<List<CartProductDto>> getCartProductsByCartId(@PathVariable("cart-id") Long cartId) {
@@ -45,7 +45,7 @@ public class CartController {
 
     @Operation(summary = "Add item to cart")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Item added to cart successfully"),
+            @ApiResponse(responseCode = "200", description = "Item added to cart successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping
@@ -64,7 +64,7 @@ public class CartController {
     @Operation(summary = "Get all cart's items")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "List of cart items returned successfully"),
-            @ApiResponse(responseCode = "204", description = "No items found in cart")
+            @ApiResponse(responseCode = "404", description = "No items found in cart")
     })
     @GetMapping
     public ResponseEntity<List<CartItemDto>> getCartItems() {
@@ -120,7 +120,7 @@ public class CartController {
 
     @Operation(summary = "Clear cart")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Cart cleared successfully"),
+            @ApiResponse(responseCode = "200", description = "Cart cleared successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @DeleteMapping("/clear")

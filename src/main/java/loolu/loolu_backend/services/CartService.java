@@ -15,7 +15,7 @@ public interface CartService {
 
     List<CartItemDto> getCartItems();
 
-    CartItemDto deleteItemFromCart(Long itemId);
+    CartItemDto deleteItemFromCart(Long cartId, Long itemId);
 
     CartItemDto clearCart();
 

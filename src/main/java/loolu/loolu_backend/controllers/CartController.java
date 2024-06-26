@@ -80,22 +80,22 @@ public class CartController {
 
     @Operation(summary = "Delete item from cart")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Item deleted from cart successfully"),
+            @ApiResponse(responseCode = "200", description = "Item deleted from cart successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
-    @DeleteMapping("/{item-id}")
-    public ResponseEntity<Void> deleteItemFromCart(@PathVariable("item-id") Long itemId) {
+    @DeleteMapping("/{cart-id}/{item-id}")
+    public ResponseEntity<CartItemDto> deleteItemFromCart(@PathVariable("cart-id") Long cartId, @PathVariable("item-id") Long itemId) {
         try {
-            cartService.deleteItemFromCart(itemId);
-            return ResponseEntity
-                    .noContent()
-                    .build();
+            CartItemDto deletedItem = cartService.deleteItemFromCart(cartId, itemId);
+            return ResponseEntity.ok(deletedItem);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+
 
     @Operation(summary = "Update cart item")
     @ApiResponses(value = {

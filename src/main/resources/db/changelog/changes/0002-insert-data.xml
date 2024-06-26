@@ -5,6 +5,22 @@
 
     <changeSet id="0002-insert-data" author="loolu" runOnChange="true">
 
+        <!-- Add category_id column to pictures table -->
+        <addColumn tableName="pictures">
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <!-- Add foreign key constraint from pictures.category_id to categories.id -->
+        <addForeignKeyConstraint baseTableName="pictures"
+                                 baseColumnNames="category_id"
+                                 constraintName="fk_pictures_category_id"
+                                 referencedTableName="categories"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+
+
         <!-- Inserting Categories -->
         <insert tableName="categories">
             <column name="name" value="Games"/>
@@ -97,10 +113,12 @@
         </insert>
 
         <!-- Inserting Pictures -->
-        <!-- Product: Socks -->
+
+        <!-- Inserting Pictures for products in 'Games' category -->
         <insert tableName="pictures">
-            <column name="url" value="https://m.media-amazon.com/images/I/81pqiCKKnxL._AC_SX569_.jpg"/>
+            <column name="url" value="https://static.tildacdn.com/stor6335-3863-4561-b736-656135343937/37808592.png"/>
             <column name="product_id" value="1"/>
+            <column name="category_id" value="2"/> <!-- Adding category_id for The Witcher 3: Wild Hunt -->
         </insert>
         <insert tableName="pictures">
             <column name="url" value="https://m.media-amazon.com/images/I/71kS2xth9HL._AC_SY879_.jpg"/>

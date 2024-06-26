@@ -7,11 +7,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import loolu.loolu_backend.domain.Role;
 import loolu.loolu_backend.domain.User;
 import loolu.loolu_backend.dto.UserDto;
+import loolu.loolu_backend.dto.UserRegistrationDTO;
+import loolu.loolu_backend.models.Cart;
 import loolu.loolu_backend.repositories.RoleRepository;
 import loolu.loolu_backend.repositories.UserRepository;
+import loolu.loolu_backend.services.impl.EmailService;
 import loolu.loolu_backend.services.impl.UserService;
 import loolu.loolu_backend.services.impl.UserServiceImpl;
 import org.antlr.v4.runtime.misc.LogManager;
@@ -22,13 +26,20 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Tag(name = "User Controller", description = "Controller for managing users")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+
+    @Autowired
+    private EmailService emailService;
+
 
     @Autowired
     private UserServiceImpl userService;
@@ -76,7 +87,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Invalid input",
                     content = @Content) })
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
         Role userRole = roleRepository.findByName("ROLE_USER");
         if (userRole == null) {
             userRole = new Role();
@@ -84,9 +95,14 @@ public class UserController {
             roleRepository.save(userRole);
         }
 
-        user.getRoles().add(userRole);
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
+        User createdUser = userService.createUser(userRegistrationDTO);
+
+//        String subject = "Welcome to our Loolu service!";
+//        String text = "Greetings, " + userRegistrationDTO.getFirstName() +
+//                "! Thank you for signing up for our Loolu service.";
+//        emailService.sendEmail(userRegistrationDTO.getEmail(), subject, text);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
     @Operation(summary = "Update an existing user")
@@ -103,7 +119,6 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
 
-        // Обновление только переданных полей
         if (userDetails.getFirstName() != null) {
             existingUser.setFirstName(userDetails.getFirstName());
         }

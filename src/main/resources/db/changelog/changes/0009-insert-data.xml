@@ -1089,19 +1089,21 @@
             <column name="product_id" value="70"/>
             <column name="category_id" value="7"/>
         </insert>
-        <!-- Warcraft game -->
+        <!-- Product: Iphone 15 Pro Max -->
         <insert tableName="products">
-            <column name="title" value="Warcraft game"/>
-            <column name="price" value="99.99"/>
-            <column name="description" value="World of Warcraft ."/>
-            <column name="category_id" value="1"/>
+            <column name="title" value="Iphone 15 Pro Max"/>
+            <column name="price" value="1479.99"/>
+            <column name="description" value="The iPhone 15 Pro display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle."/>
+            <column name="category_id" value="2"/>
         </insert>
 
         <insert tableName="pictures">
-            <column name="url" value="https://i.pinimg.com/originals/dc/d9/fa/dcd9fa589f4b36f3add7833b4510b043.jpg"/>
+            <column name="url" value="https://cdn.mos.cms.futurecdn.net/b7HJX9i4gGiecMMxbAdFBU-1200-80.jpg"/>
             <column name="product_id" value="71"/>
-            <column name="category_id" value="1"/>
         </insert>
+
+
+
         <!-- Fallout 4 -->
         <insert tableName="products">
             <column name="title" value=" Fallout 4 "/>
@@ -1246,7 +1248,301 @@
 
 
 
+        <!-- Warcraft game -->
+        <insert tableName="products">
+            <column name="title" value="Warcraft game"/>
+            <column name="price" value="99.99"/>
+            <column name="description" value="World of Warcraft ."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
 
+        <insert tableName="pictures">
+            <column name="url" value="https://i.pinimg.com/originals/dc/d9/fa/dcd9fa589f4b36f3add7833b4510b043.jpg"/>
+            <column name="product_id" value="82"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <!-- Fallout 4 -->
+        <insert tableName="products">
+            <column name="title" value=" Fallout 4 "/>
+            <column name="price" value="39.49"/>
+            <column name="description" value=" Fallout 4  ."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://icegames.store/f22c1da8-03ff-4dc5-a10b-71d1ea907fc9.jpg"/>
+            <column name="product_id" value="83"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!--Horizon Zero Dawn-->
+        <insert tableName="products">
+            <column name="title" value="Horizon Zero Dawn "/>
+            <column name="price" value="39.49"/>
+            <column name="description" value="Horizon Zero Dawn ."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://i.pinimg.com/originals/21/78/9f/21789fa4cd6b75b2e7f964ad607cc360.jpg"/>
+            <column name="product_id" value="84"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!--PlayerUnknown's Battlegrounds -->
+        <insert tableName="products">
+            <column name="title" value="PlayerUnknown's Battlegrounds "/>
+            <column name="price" value="72.49"/>
+            <column name="description" value="PlayerUnknown's Battlegrounds."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://cdn.skidka-msk.ru/images/prodacts/sourse/65921/65921437_pubg-corporation-playerunknowns-battleground-pc-tsifrovaya-versiya.jpg"/>
+            <column name="product_id" value="85"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!--JustCause3-->
+        <insert tableName="products">
+            <column name="title" value="JustCause3 "/>
+            <column name="price" value="22.49"/>
+            <column name="description" value="JustCause3."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://www.1c-interes.ru/images/2018/08/27160421_JustCause3_PC.jpg"/>
+            <column name="product_id" value="86"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!--Tomb Raider-->
+        <insert tableName="products">
+            <column name="title" value="Tomb Raider "/>
+            <column name="price" value="29.99"/>
+            <column name="description" value="Tomb Raider."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://i.playground.ru/e/U1-0ycjdNI2QyAwllbuBcw.jpeg"/>
+            <column name="product_id" value="87"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!-- Shadow of the Tomb Raider-->
+        <insert tableName="products">
+            <column name="title" value=" Shadow of the Tomb Raider "/>
+            <column name="price" value="29.99"/>
+            <column name="description" value=" Shadow of the Tomb Raider."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://basket-10.wb.ru/vol1585/part158599/158599742/images/big/1.jpg"/>
+            <column name="product_id" value="88"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!-- battlefield 5-->
+        <insert tableName="products">
+            <column name="title" value=" Battlefield 5 "/>
+            <column name="price" value="110.99"/>
+            <column name="description" value=" Battlefield 5."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://www.digiseller.ru/preview/1018188/p1_3190078_3b171dba.jpg"/>
+            <column name="product_id" value="89"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <!-- Lord of fallen-->
+        <insert tableName="products">
+            <column name="title" value="Lord of fallen"/>
+            <column name="price" value="40.99"/>
+            <column name="description" value="Lord of fallen."/>
+            <column name="category_id" value="1"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://8bit.sale/wp-content/uploads/2020/07/videoigra-lords-of-the-fallen-polnoe-izdanie-complete-edition-russkaya-versiya-xbox-one.jpg"/>
+            <column name="product_id" value="90"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <!-- Warcraft game -->
+        <insert tableName="products">
+            <column name="title" value="Warcraft game"/>
+            <column name="price" value="99.99"/>
+            <column name="description" value="World of Warcraft ."/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://i.pinimg.com/originals/dc/d9/fa/dcd9fa589f4b36f3add7833b4510b043.jpg"/>
+            <column name="product_id" value="91"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <!-- Product: Iphone 15 Pro Max -->
+        <insert tableName="products">
+            <column name="title" value="Iphone 15 Pro Max"/>
+            <column name="price" value="1479.99"/>
+            <column name="description" value="The iPhone 15 Pro display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle."/>
+            <column name="category_id" value="8"/>
+        </insert>
+        <insert tableName="pictures">
+            <column name="url" value="https://cdn.mos.cms.futurecdn.net/b7HJX9i4gGiecMMxbAdFBU-1200-80.jpg"/>
+            <column name="product_id" value="92"/>
+        </insert>
+        <!-- Refrigerator -->
+        <insert tableName="products">
+            <column name="title" value="Refrigerator"/>
+            <column name="price" value="1234.45"/>
+            <column name="description" value="Liebherr CBNbs"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://mile.by/images/cache/_thumb_900x900xin_upload_iblock_234_1447978_1.jpg"/>
+            <column name="product_id" value="93"/>
+        </insert>
+
+
+        <!-- Xerox -->
+        <insert tableName="products">
+            <column name="title" value="Xerox"/>
+            <column name="price" value="2346.67"/>
+            <column name="description" value="Xerox B7035 Power Button"/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://www.stptexas.com/sites/default/files/styles/advanced_blog/public/image-uploads/Website%20Banners-59-min-2-min.png?itok=h1CHfs8e"/>
+            <column name="product_id" value="94"/>
+        </insert>
+
+
+        <!-- Razer Blade 15 Advanced -->
+        <insert tableName="products">
+            <column name="title" value="Razer Blade 15 Advanced"/>
+            <column name="price" value="2499.99"/>
+            <column name="description" value="Premium gaming laptop with Intel Core i7, NVIDIA RTX 3070, and 4K OLED display."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://mcsolution.com.bd/wp-content/uploads/2022/06/razer-blade-17-2022-price.webp"/>
+            <column name="product_id" value="95"/>
+        </insert>
+
+
+        <!-- Apple Mac 27-inch -->
+        <insert tableName="products">
+            <column name="title" value="Apple Mac 27-inch"/>
+            <column name="price" value="1799.99"/>
+            <column name="description" value="All-in-one desktop with Retina 5K display, Intel Core i5, and Radeon Pro 5300."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://www.itronic.fi/images/banners/GBEN_iMac_1.jpg"/>
+            <column name="product_id" value="96"/>
+        </insert>
+
+
+        <!-- Drone -->
+        <insert tableName="products">
+            <column name="title" value="Drone"/>
+            <column name="price" value="799.99"/>
+            <column name="description" value="Quadcopter drone with 4K camera and GPS."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://avatars.mds.yandex.net/get-mpic/11763878/2a0000018b14df672597b1edf8e9bb033bc7/orig"/>
+            <column name="product_id" value="97"/>
+        </insert>
+
+
+        <!-- Virtual Reality Headset -->
+        <insert tableName="products">
+            <column name="title" value="Virtual Reality Headset"/>
+            <column name="price" value="399.99"/>
+            <column name="description" value="VR headset for immersive gaming and virtual experiences."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://basket-02.wbbasket.ru/vol264/part26451/26451788/images/big/2.webp"/>
+            <column name="product_id" value="98"/>
+        </insert>
+
+
+        <!-- Nintendo Switch OLED Model -->
+        <insert tableName="products">
+            <column name="title" value="Nintendo Switch OLED Model"/>
+            <column name="price" value="349.99"/>
+            <column name="description" value="Enhanced Nintendo Switch console with vibrant OLED display and improved audio."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://cdn1.ozone.ru/s3/multimedia-d/6739294477.jpg"/>
+            <column name="product_id" value="99"/>
+        </insert>
+
+
+
+        <!-- PlayStation 4 Pro -->
+        <insert tableName="products">
+            <column name="title" value="PlayStation 4 Pro"/>
+            <column name="price" value="399.99"/>
+            <column name="description" value="High-performance PlayStation console with 4K gaming and HDR technology."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://johnlewis.scene7.com/is/image/JohnLewis/237231759?$rsp-pdp-port-1440$"/>
+            <column name="product_id" value="100"/>
+        </insert>
+
+        <!-- Fitbit Charge 4 -->
+        <insert tableName="products">
+            <column name="title" value="Fitbit Charge 4"/>
+            <column name="price" value="149.99"/>
+            <column name="description" value="Fitness and activity tracker with built-in GPS and heart rate monitoring."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://m.media-amazon.com/images/I/71QJF4hIPBL._AC_SL1500_.jpg"/>
+            <column name="product_id" value="101"/>
+        </insert>
+
+
+        <!-- DJI Mavic Air 2 -->
+        <insert tableName="products">
+            <column name="title" value="DJI Mavic Air 2"/>
+            <column name="price" value="799.99"/>
+            <column name="description" value="Foldable drone with 4K camera, 34-minute flight time, and advanced obstacle avoidance."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://90.img.avito.st/image/1/1.RV1Dh7a56bR1LiuxRYoGE5Ik7773pOF28iTrsP8u47Y.z5G_ZG3QKWC4wZtlddP0YIfSPzHiivNBUNUwMC40akA"/>
+            <column name="product_id" value="102"/>
+        </insert>
 
 
 

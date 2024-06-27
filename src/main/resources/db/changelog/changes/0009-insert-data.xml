@@ -1230,6 +1230,21 @@
             <column name="category_id" value="1"/>
         </insert>
 
+        <!--Doom Sales-->
+        <insert tableName="products">
+            <column name="title" value="Doom-"/>
+            <column name="price" value="50.99"/>
+            <column name="description" value="Doom-."/>
+            <column name="category_id" value="8"/>
+        </insert>
+
+        <insert tableName="pictures">
+            <column name="url" value="https://icegames.store/71b7ddc5-2d1c-4c6f-ab1f-e3b7e83403a2.jpg"/>
+            <column name="product_id" value="81"/>
+            <column name="category_id" value="1"/>
+        </insert>
+
+
 
 
 

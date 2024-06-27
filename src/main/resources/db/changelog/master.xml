@@ -5,6 +5,7 @@
 
     <include file="classpath:db/changelog/changes/0001-create-tables.xml"/>
 <!--    <include file="classpath:db/changelog/changes/0002-insert-data.xml"/>-->
-    <include file="classpath:db/changelog/changes/0008-insert-data.xml"/>
+<!--    <include file="classpath:db/changelog/changes/0008-insert-data.xml"/>-->
+    <include file="classpath:db/changelog/changes/0009-insert-data.xml"/>
 
 </databaseChangeLog>

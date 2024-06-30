@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
         // Фильтрация по цене
         if (price != null) {
             products = products.stream()
-                    .filter(product -> product.getPrice() == price)
+                    .filter(product -> product.getPrice().equals(price))
                     .collect(Collectors.toList());
         }
 
@@ -91,10 +91,23 @@ public class ProductServiceImpl implements ProductService {
                     .collect(Collectors.toList());
         }
 
+        // Фильтрация по диапазону цен
+        if (price_min != null  ) {
+            products = products.stream()
+                    .filter(product -> product.getPrice() >= price_min )
+                    .collect(Collectors.toList());
+        }
+
+        if (price_max != null  ) {
+            products = products.stream()
+                    .filter(product -> product.getPrice() <= price_max )
+                    .collect(Collectors.toList());
+        }
+
         // Фильтрация по категории
         if (categoryId != null) {
             products = products.stream()
-                    .filter(product -> product.getCategory().getId() == categoryId)
+                    .filter(product -> product.getCategory().getId().equals(categoryId))
                     .collect(Collectors.toList());
         }
 

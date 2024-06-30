@@ -10,9 +10,9 @@ import io.swagger.v3.oas.annotations.info.Info;
                 description = "Loolu Backend API application for JSON web tokens",
                 version = "1.0.0",
                 contact = @Contact(
-                        name = "Sandor Ivanyo",
-                        email = "iskander.sancosjak@gmail.com",
-                        url = "https://github.com/SancosJak"
+                        name = "Sergey Shein",
+                        email = "toxicmoos6@gmail.com",
+                        url = "https://github.com/ToxicMoos"
                 )
         )
 )

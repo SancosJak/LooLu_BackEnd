@@ -15,6 +15,24 @@ import java.util.List;
 public class AspectLogging {
     private final Logger logger = LoggerFactory.getLogger(AspectLogging.class);
 
+    @Pointcut("execution(* loolu.loolu_backend.security.sec_controller.AuthController.getProfile(..))")
+    public void getProfile() {}
+
+    @Before("getProfile()")
+    public void beforeGetProfile(JoinPoint joinPoint) {
+        logger.info("Method getProfile of the class UserController is called");
+    }
+
+    @AfterReturning(value = "getProfile()", returning = "result")
+    public void afterReturningGetProfile(Object result) {
+        logger.info("Method getProfile of the class UserController successfully returned profile: {}", result);
+    }
+
+    @AfterThrowing(value = "getProfile()", throwing = "e")
+    public void afterThrowingExceptionInGetProfile(Exception e) {
+        logger.error("Method getProfile of the class UserController threw an exception: {}", e.getMessage());
+    }
+
     // Pointcut for getting a product by ID
     @Pointcut("execution(* loolu.loolu_backend.services.impl.ProductServiceImpl.getProductById(..))")
     public void getProductById() {}

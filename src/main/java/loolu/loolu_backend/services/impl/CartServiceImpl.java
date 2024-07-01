@@ -28,14 +28,6 @@ public class CartServiceImpl implements CartService {
     private final UserRepository userRepository;
 
     @Override
-    public List<CartProductDto> getCartProductsDtoByCartId(Long cartId) {
-        List<CartProduct> cartProducts = cartProductRepository.findByCartId(cartId);
-        return cartProducts.stream()
-                .map(cp -> new CartProductDto(cp.getId(), cartId, cp.getProduct().getId(), cp.getQuantity()))
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public CartItemDto addItemToCart(CartItemDto cartItem) {
         if (cartItem.getQuantity() <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than zero");
@@ -86,7 +78,6 @@ public class CartServiceImpl implements CartService {
         return new CartItemDto(cartProduct.getId(), cartProduct.getCart().getId(),
                 cartProduct.getProduct().getId(), cartProduct.getQuantity());
     }
-
 
     @Override
     public CartItemDto clearCart() {

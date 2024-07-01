@@ -184,5 +184,12 @@
 
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>internal-repo</id>
+            <url>https://github.com/SancosJak/LooLu_BackEnd</url>
+        </repository>
+    </distributionManagement>
+
 
 </project>

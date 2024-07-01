@@ -41,6 +41,7 @@ public class Product {
     private String description;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private Set<Picture> picture = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -48,6 +49,7 @@ public class Product {
     private Category category;
 
     @ManyToMany(mappedBy = "products")
+    @Builder.Default
     private Set<Cart> carts = new HashSet<>();
 
     // Переопределяем hashCode и equals, исключая поле picture для избежания циклической зависимости

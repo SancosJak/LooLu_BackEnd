@@ -1,20 +1,23 @@
-FROM maven:3.8.1-openjdk-17 AS build
 
-WORKDIR /app
+
+FROM maven as build
+
+WORKDIR /workspace/app
 
 COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
+
 COPY src ./src
 
-RUN mvn dependency:go-offline
+RUN mvn clean package
 
-RUN mvn clean package -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-alpine
 
-WORKDIR /app
+ARG DEPENDENCY=/workspace/app/target/dependency
 
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-cp", "app:app/lib/*", "loolu.loolu_backend.LooLuBackEndApplication"]

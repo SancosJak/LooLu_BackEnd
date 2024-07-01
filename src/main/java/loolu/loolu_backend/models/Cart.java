@@ -31,6 +31,7 @@ public class Cart {
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
+    @Builder.Default
     private Set<Product> products = new HashSet<>();
 
     @OneToMany(mappedBy = "cart")
